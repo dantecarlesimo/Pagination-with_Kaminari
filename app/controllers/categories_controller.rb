@@ -4,7 +4,9 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    @categories = Category.all.includes(:products)
+    # @categories = Category.all.includes(:products).limit(2)
+    # @categories = Category.all.includes(:products).where("products.price" => 3)
   end
 
   # GET /categories/1
